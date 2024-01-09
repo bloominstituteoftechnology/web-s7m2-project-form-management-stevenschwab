@@ -40,14 +40,17 @@ export default function App() {
     const { id, value } = evt.target;
     setFormValues(prevValues => ({ ...prevValues, [id]: value }))
   }
+  
   const edit = id => {
     setEditing(id);
   }
+
   const submitNewMember = () => {
     const { fname, lname, bio } = formValues;
     const newMember = { fname, lname, bio, id: getId() };
     setMembers([ ...members, newMember]);
   }
+
   const editExistingMember = () => {
     setMembers(prevMembers => prevMembers.map(mem => {
       if (mem.id == editing) {
@@ -56,6 +59,7 @@ export default function App() {
       return mem;
     }))
   }
+
   const onSubmit = evt => {
     evt.preventDefault();
     if (editing) {
@@ -66,6 +70,7 @@ export default function App() {
     setFormValues(initialFormValues());
     setEditing(null);
   }
+
   return (
     <div>{/* ✨ Fix the JSX by wiring the necessary values and event handlers */}
       <div id="membersList">
